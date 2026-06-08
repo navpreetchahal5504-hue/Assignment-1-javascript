@@ -76,10 +76,39 @@ function generateMission(){
 
     document.getElementById("output").innerHTML = missions;
     }
+
+function randomMission(){
+
+    agentIndex = Math.floor(Math.random() * agents.length);
+    locationIndex = Math.floor(Math.random() * locations.length);
+    weaponIndex = Math.floor(Math.random() * weapons.length);
+    objectiveIndex = Math.floor(Math.random() * objectives.length);
+    riskIndex = Math.floor(Math.random() * risks.length);
+
+    document.getElementById("agentDisplay").textContent = agents[agentIndex];
+    document.getElementById("locationDisplay").textContent = locations[locationIndex];
+    document.getElementById("weaponDisplay").textContent = weapons[weaponIndex];
+    document.getElementById("objectiveDisplay").textContent = objectives[objectiveIndex];
+    document.getElementById("riskDisplay").textContent = risks[riskIndex];
     
+    generateMission();
 
+}
+function resetMission (){
+    agentIndex = -1;
+    locationIndex = -1;
+    weaponIndex = -1;
+    objectiveIndex = -1;
+    riskIndex = -1;
 
+      document.getElementById("agentDisplay").textContent =  "Not Selected";
+      document.getElementById("locationDisplay").textContent =  "Not Selected";
+      document.getElementById("weaponDisplay").textContent =  "Not Selected";
+      document.getElementById("objectiveDisplay").textContent =  "Not Selected";
+      document.getElementById("riskDisplay").textContent =  "Not Selected";
 
-    
-        
-
+      document.getElementById("output").innerHTML = "";
+document.getElementById("launchBtn").addEventListener("click", generateMission);
+document.getElementById("randomBtn").addEventListener("click", randomMission);
+document.getElementById("resetBtn").addEventListener("click", resetMission);
+}
